@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+    <title>Todo App</title>
+</head>
+
+<body>
+    <div class = "center">
+        <div class="fle">
+            <h1 >To Do App</h1>
+        <form class="search" action="/search" method="post">
+
+            <input type="text" placeholder="search" name="a" value="{{ab}}">
+            <button id="search" type="submit">Search</button>
+        </form>
+        </div>
+
+        <br><br>
+        <div class="roo">
+        <label class="task-label">Create a Task</label>
+        <form class="qaaa" action="/add" method="post">
+                <input type="text" name="title" placeholder="Enter Todo...">
+                <input type="date" name="date">
+
+                <button id="addtask" type="submit">Add</button>
+
+            <br><br>
+        </form>
+            <br>
+            <form action="/sort" method="post">
+                <button type="submit">Sort By Date</button>
+            </form>
+
+            <br>
+            <form action="/display" method="post">
+                <button type="submit">Tasks on {{ date }}</button>
+                <input type="date" name="date">
+
+            </form>
+            <br>
+        </div>
+
+
+        <br>
+
+        <h3>Tasks</h3>
+        <br>
+
+        {% for todo in todo_list %}
+        <div class="spapp">
+
+            <p>{{todo.id }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ todo.title }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{todo.date}}  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  {{todo.days}}</p>
+            <br>
+            <div class="app">
+
+            {% if todo.complete == False %}
+            <span><a href="/complete/{{ todo.id }}">Not Completed</a></span>
+            {% else %}
+            <span><a href="/complete/{{ todo.id }}">Completed</a></span>
+            {% endif %}
+            <a href="/update/{{ todo.id }}">Update</a>
+            <a href="/delete/{{ todo.id }}">Delete</a>
+            </div>
+        </div>
+        {% endfor %}
+
+
+        <form action="/deleteall">
+                <button type="submit">Delete All</button>
+        </form>
+    </div>
+
+</body>
+
+</html>
