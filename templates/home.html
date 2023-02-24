@@ -19,20 +19,18 @@
         </form>
         </div>
 
-        <br><br>
         <div class="roo">
-        <label class="task-label">Create a Task</label>
+        <h3>Create a Task</h3>
         <form class="qaaa" action="/add" method="post">
-                <input type="text" name="title" placeholder="Enter Todo...">
+                <input type="text" class="taskin" name="title" placeholder="Enter Todo...">
                 <input type="date" name="date">
-
                 <button id="addtask" type="submit">Add</button>
 
             <br><br>
         </form>
             <br>
-            <form action="/sort" method="post">
-                <button type="submit">Sort By Date</button>
+            <form class="sort" action="/sort" method="post">
+                <button id="sorttask" type="submit">Sort By Date</button>
             </form>
 
             <br>
