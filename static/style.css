@@ -72,6 +72,52 @@ h3{
 #addtask:hover{
     opacity: 0.75;
 }
+#sorttask{
+    margin-left: 5px;
+	width: 15%;
+	font-size: 1.125rem;
+	padding: 10px;
+    border: none;
+	color: #FFF;
+	font-weight: 700;
+	text-transform: uppercase;
+	background-color: var(--primary);
+	border-radius: 0.5rem;
+	cursor: pointer;
+	transition: 0.2s ease-out;
+    }
+#sorttask:hover{
+    opacity: 0.75;
+}
+#taskon{
+    margin-left: 5px;
+	width: 15%;
+	font-size: 1.125rem;
+	padding: 10px;
+    border: none;
+	color: #FFF;
+	font-weight: 700;
+	text-transform: uppercase;
+	background-color: var(--primary);
+	border-radius: 0.5rem;
+	cursor: pointer;
+	transition: 0.2s ease-out;
+    }
+#taskon:hover{
+    opacity: 0.75;
+}
+.day{
+    float: left;
+	font-size: 1.125rem;
+	padding: 10px;
+	box-shadow: grey;
+    border: none;
+	color: var(--dark);
+	background-color: #FFF;
+	border-radius: 0.4rem;
+	box-shadow: var(--shadow);
+	margin-bottom: 1.5rem;
+}
 .search{
     float:right;
 }
