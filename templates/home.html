@@ -32,6 +32,9 @@
             <form class="sort" action="/sort" method="post">
                 <button id="sorttask" type="submit">Sort By Date</button>
             </form>
+            <form action="/deleteall">
+                <button type="submit">Delete All</button>
+            </form>
 
             <br>
             <form action="/display" method="post">
@@ -48,24 +51,30 @@
         <h3>Tasks</h3>
         <br>
 
-        {% for todo in todo_list %}
-        <div class="spapp">
-
-            <p>{{todo.id }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ todo.title }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{todo.date}}  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  {{todo.days}}</p>
-            <br>
-            <div class="app">
-
-            {% if todo.complete == False %}
-            <span><a href="/complete/{{ todo.id }}">Not Completed</a></span>
-            {% else %}
-            <span><a href="/complete/{{ todo.id }}">Completed</a></span>
-            {% endif %}
-            <a href="/update/{{ todo.id }}">Update</a>
-            <a href="/delete/{{ todo.id }}">Delete</a>
-            </div>
-        </div>
-        {% endfor %}
-
+        {% if todo_list %}
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Due Date</th>
+                <th>Days Left/Overdue</th>
+                <th>Actions</th>
+            </tr>
+            {% for todo in todo_list %}
+                <tr>
+                    <td>{{ todo.title }}</td>
+                    <td>{{ todo.date }}</td>
+                    <td>{{ todo.days }}</td>
+                    <td>
+                        <button><a href="{{ url_for('update', todo_id=todo.id) }}">Edit</a></button>
+                        <a href="{{ url_for('complete', todo_id=todo.id) }}">Mark Complete</a>
+                        <a href="{{ url_for('delete', todo_id=todo.id) }}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No tasks yet. Add one above.</p>
+    {% endif %}
 
         <form action="/deleteall">
                 <button type="submit">Delete All</button>
