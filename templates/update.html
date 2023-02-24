@@ -3,23 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Update Task</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
 </head>
 <body>
+<h2>Update Task</h2>
 <div class="row">
 
         <form action="/update/{{ todo.id }}" method="post">
-            <div >
-                <label>Todo Title</label>
-                <input type="text" name="title" value="{{ todo.title }}">
-                <label>Due Date</label>
+                <input class="taskup" type="text" name="title" value="{{ todo.title }}">
                 <input type="date" name="date" value="{{todo.date}}">
-
-
-
-            </div>
-            <button type="submit">Update</button>
+            <button id="updtask" type="submit">Update</button>
         </form>
         </div>
 

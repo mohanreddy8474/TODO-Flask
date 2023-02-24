@@ -33,7 +33,7 @@
                 <button id="sorttask" type="submit">Sort By Date</button>
             </form>
             <form action="/deleteall">
-                <button type="submit">Delete All</button>
+                <button id="delall" type="submit">Delete All</button>
             </form>
 
             <br>
@@ -65,8 +65,12 @@
                     <td>{{ todo.date }}</td>
                     <td>{{ todo.days }}</td>
                     <td>
-                        <button><a href="{{ url_for('update', todo_id=todo.id) }}">Edit</a></button>
-                        <a href="{{ url_for('complete', todo_id=todo.id) }}">Mark Complete</a>
+                        <a href="{{ url_for('update', todo_id=todo.id) }}">Edit</a>
+                        {% if todo.complete == False %}
+                        <a href="/complete/{{ todo.id }}">Not Completed</a>
+                        {% else %}
+                        <a href="/complete/{{ todo.id }}">Completed</a>
+                        {% endif %}
                         <a href="{{ url_for('delete', todo_id=todo.id) }}">Delete</a>
                     </td>
                 </tr>
