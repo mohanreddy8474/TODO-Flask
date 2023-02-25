@@ -15,4 +15,4 @@ method : get, post
 
 Database used is SQLite
 
-Table Columns are id(integer), title(text), desc(text), complete(boolean), date(date)
+Table Columns are id(integer), title(text), complete(boolean), date(date), days(text)

@@ -48,7 +48,7 @@ def add():
     db.session.add(new_todo)
     db.session.commit()
     todo_list = Todo.query.all()
-    return render_template("home.html", todo_list=todo_list)
+    return redirect('/')
 
 
 @app.route("/update/<int:todo_id>", methods=["GET", "POST"])
